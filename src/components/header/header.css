@@ -1,0 +1,19 @@
+.header {
+	padding-top: 30px;
+	display: flex;
+	align-items: center;
+}
+.header__title{
+	flex-basis: 20%;
+	
+}
+.header__title a{
+	text-decoration: none;	
+}
+
+.nav-link{
+	font-size: 24px;
+}
+.nav-item:not(:last-child){
+	padding-right: 10px;
+}

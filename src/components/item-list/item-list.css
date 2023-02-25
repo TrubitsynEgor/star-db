@@ -1,0 +1,15 @@
+.item-list {
+	background-color: var(--bs-gray-800);
+	border-radius: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	list-style: none;
+	border: 1px solid rgba(255,255,255, 0.2);
+}
+.item-list li{
+	padding: 10px 0;
+
+}
+.item-list li:not(:last-child) {
+		border-bottom: 1px solid rgba(255,255,255, 0.2)
+}
