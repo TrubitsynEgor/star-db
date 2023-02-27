@@ -27,6 +27,10 @@ export default class ItemList extends Component {
 			.getAllPeople()
 			.then((peopleList) => this.setState({ peopleList }))
 	}
+
+	onPersonSelected = (id) => {
+		console.log(id);
+	}
 	render() {
 
 		const { peopleList } = this.state;
@@ -37,10 +41,13 @@ export default class ItemList extends Component {
 		}
 		return (
 			<ul className="item-list">
-				<li>Lukie</li>
-				<li>Vader</li>
-				<li>R2-D2</li>
-
+				{
+					peopleList.map(el => {
+						return (
+							<li key={el.id} onClick={() => this.onPersonSelected(el.id)}>{el.name}</li>
+						)
+					})
+				}
 			</ul>
 		)
 	}

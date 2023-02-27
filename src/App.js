@@ -14,16 +14,26 @@ import './App.css'
 
 export default class App extends Component {
 
+	state = {
+		selectedPerson: null,
+	}
+
+	onPersonSelected = (id) => {
+		this.setState({
+			selectedPerson: id
+		})
+	}
+
 	render() {
 		return (
 			<div className='app'>
 				<Header />
 				<RandomPlanet />
 				<div className='app-bot'>
-					<ItemList />
+					<ItemList onPersonSelected={this.onPersonSelected} />
 					<PersonDetails />
 					<PlanetsDetails />
-					<StarshipsDetails />
+					<StarshipsDetails personId={this.state.selectedPerson} />
 				</div>
 
 			</div>
