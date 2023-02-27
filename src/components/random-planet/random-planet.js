@@ -9,22 +9,25 @@ import './random-planet.css';
 
 export default class RandomPlanet extends Component {
 	swapiService = new SwapiService;
+
 	state = {
 		planet: {},
 		loading: true,
 		error: false,
 	}
 
-
-
-	constructor() {
-		super();
+	componentDidMount() {
 		this.updatePlanet();
+		setInterval(this.updatePlanet, 3000)
 	}
+
+
 
 	onPlanetLoaded = (planet) => {
 		this.setState({
-			planet, loading: false
+			planet,
+			loading: false,
+			error: false
 		})
 	};
 
@@ -32,7 +35,7 @@ export default class RandomPlanet extends Component {
 		this.setState({ error: true })
 	}
 
-	updatePlanet() {
+	updatePlanet = () => {
 		const id = Math.floor(Math.random() * 17 + 2);
 		this.swapiService
 			.getPlanet(id)
@@ -40,9 +43,7 @@ export default class RandomPlanet extends Component {
 			.catch(this.onError)
 
 	}
-
 	render() {
-
 		const { planet: { id, name, population, rotationPeriod, diameter }, loading, error } = this.state;
 
 		if (error) {
@@ -57,25 +58,26 @@ export default class RandomPlanet extends Component {
 		}
 
 		return (
+			<>
 
-			<div className="random-planet">
+				<div className="random-planet">
 
-				<div className="random-planet__img">
-					<img
-						src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-						alt="This planet Naboo" />
+					<div className="random-planet__img">
+						<img
+							src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+							alt="This planet Naboo" />
+					</div>
+					<div className="random-planet__content">
+						<h2 className="random-planet__title">{name}</h2>
+						<ul className="random-planet__info">
+							<li><span>Population:</span> <span>{population}</span></li>
+							<li><span>Rotation period:</span> <span>{rotationPeriod}</span></li>
+							<li><span>Diameter:</span> <span>{diameter}</span></li>
+						</ul>
+					</div>
+
 				</div>
-
-				<div className="random-planet__content">
-					<h2 className="random-planet__title">{name}</h2>
-					<ul className="random-planet__info">
-						<li><span>Population:</span> <span>{population}</span></li>
-						<li><span>Rotation period:</span> <span>{rotationPeriod}</span></li>
-						<li><span>Diameter:</span> <span>{diameter}</span></li>
-					</ul>
-				</div>
-
-			</div>
+			</>
 		)
 	}
 }

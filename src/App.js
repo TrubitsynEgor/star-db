@@ -7,14 +7,8 @@ import PlanetsDetails from './components/planets-details';
 import RandomPlanet from './components/random-planet';
 import StarshipsDetails from './components/starships-details';
 
+
 import './App.css'
-import Spinner from './components/spinner/spinner';
-
-
-
-
-
-
 
 
 
