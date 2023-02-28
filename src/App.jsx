@@ -1,42 +1,46 @@
 import React, { Component } from 'react';
-import SwapiService from './services/swapi-service';
 import Header from './components/header';
-import ItemList from './components/item-list';
-import PersonDetails from './components/person-details';
-import PlanetsDetails from './components/planets-details';
 import RandomPlanet from './components/random-planet';
-import StarshipsDetails from './components/starships-details';
+
 
 
 import './App.css'
+import PeoplePage from './components/people-page';
+import ErrorIndicator from './components/error-indication';
 
 
 
 export default class App extends Component {
 
+
 	state = {
-		selectedPerson: 5,
+		hasError: false,
 	}
 
-	onPersonSelected = (id) => {
-		this.setState({
-			selectedPerson: id
-		})
+	componentDidCatch() {
+		this.setState({ hasError: true })
 	}
+
+
 
 	render() {
+
+		if (this.state.hasError) {
+			return <ErrorIndicator />
+		}
+
 		return (
 			<div className='app'>
 				<Header />
 				<RandomPlanet />
-				<div className='row mb2'>
-					<div className='col-md-6'><ItemList onPersonSelected={this.onPersonSelected} /></div>
-					<div className='col-md-6'><PersonDetails personId={this.state.selectedPerson} /></div>
-					<PlanetsDetails />
-					<StarshipsDetails />
-				</div>
+				<PeoplePage />
+				<PeoplePage />
+				<PeoplePage />
+				{/* <PlanetsPage />
+				<StarshipsPage /> */}
 
-			</div>
+
+			</div >
 
 		)
 	}

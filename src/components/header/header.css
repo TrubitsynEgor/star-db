@@ -1,10 +1,10 @@
 .header {
 	padding-top: 30px;
-	display: flex;
+	display: grid;grid-template-columns: 20% 80%;gap: 40px;
+	
 	align-items: center;
 }
 .header__title{
-	flex-basis: 20%;
 	
 }
 .header__title a{
