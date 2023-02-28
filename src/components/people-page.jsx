@@ -6,6 +6,8 @@ import PersonDetails from './person-details'
 
 export default class PeoplePage extends Component {
 
+
+
 	state = {
 		selectedPerson: 1,
 		hasError: false,
@@ -29,7 +31,11 @@ export default class PeoplePage extends Component {
 
 		return (
 			<div className='row mb2'>
-				<div className='col-md-6'><ItemList onPersonSelected={this.onPersonSelected} /></div>
+				<div className='col-md-6'><ItemList
+					onPersonSelected={this.onPersonSelected}
+					getData={this.props.getData}
+					renderItem={this.props.renderItem}
+				/></div>
 				<div className='col-md-6'><PersonDetails personId={this.state.selectedPerson} /></div>
 			</div>
 		)

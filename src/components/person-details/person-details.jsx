@@ -34,7 +34,9 @@ export default class PersonDetails extends Component {
 	render() {
 
 		if (!this.state.person) {
-			return <div className="person-details"><Spinner /></div>
+			return (
+				<h2> Select characters</h2>
+			)
 		}
 		const { id, name, gender, birthYear, eyeColor } = this.state.person;
 

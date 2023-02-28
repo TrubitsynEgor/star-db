@@ -16,36 +16,44 @@ planets.getAllPlanets().then((planets) => {
 
 export default class ItemList extends Component {
 
-	swapiService = new SwapiService();
+
 
 	state = {
-		peopleList: null,
+		ItemList: null,
 	}
 
 	componentDidMount() {
-		this.swapiService
-			.getAllPeople()
-			.then((peopleList) => this.setState({ peopleList }))
+
+		const { getData } = this.props;
+
+		getData()
+			.then((ItemList) => this.setState({ ItemList }))
 	}
 
+	renderItems(arr) {
+		return arr.map((item) => {
+			const label = this.props.renderItem(item)
+			return (
+				<li
+					key={item.id}
+					onClick={() => this.props.onPersonSelected(item.id)}>
+					{label}
+				</li>
+			)
+		})
+	}
 
 	render() {
 
-		const { peopleList } = this.state;
-		if (!peopleList) {
+		const { ItemList } = this.state;
+		if (!ItemList) {
 			return (
 				<ul className="item-list"><Spinner /></ul>
 			)
 		}
 		return (
 			<ul className="item-list">
-				{
-					peopleList.map(el => {
-						return (
-							<li key={el.id} onClick={() => this.props.onPersonSelected(el.id)}>{el.name}</li>
-						)
-					})
-				}
+				{this.renderItems(ItemList)}
 			</ul>
 		)
 	}
