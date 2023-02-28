@@ -15,7 +15,7 @@ import './App.css'
 export default class App extends Component {
 
 	state = {
-		selectedPerson: null,
+		selectedPerson: 5,
 	}
 
 	onPersonSelected = (id) => {
@@ -29,11 +29,11 @@ export default class App extends Component {
 			<div className='app'>
 				<Header />
 				<RandomPlanet />
-				<div className='app-bot'>
-					<ItemList onPersonSelected={this.onPersonSelected} />
-					<PersonDetails />
+				<div className='row mb2'>
+					<div className='col-md-6'><ItemList onPersonSelected={this.onPersonSelected} /></div>
+					<div className='col-md-6'><PersonDetails personId={this.state.selectedPerson} /></div>
 					<PlanetsDetails />
-					<StarshipsDetails personId={this.state.selectedPerson} />
+					<StarshipsDetails />
 				</div>
 
 			</div>
