@@ -1,12 +1,11 @@
 import ItemDetails, { Record } from "../item-details/item-details"
 import { SwapiServiceConsumer } from '../swapi-service-context/swapi-service-context'
-
+import withSwapiService from "../hoc-helpers/with-swapi-service"
 
 
 const PersonDetails = ({ itemId }) => {
 	return (
 		<SwapiServiceConsumer>
-
 			{
 				({ getPerson, getPersonImg }) => {
 					return (
@@ -23,7 +22,6 @@ const PersonDetails = ({ itemId }) => {
 const PlanetDetails = ({ itemId }) => {
 	return (
 		<SwapiServiceConsumer>
-
 			{
 				({ getPlanet, getPlanetImg }) => {
 					return (
@@ -42,7 +40,6 @@ const PlanetDetails = ({ itemId }) => {
 const StarshipDetails = ({ itemId }) => {
 	return (
 		<SwapiServiceConsumer>
-
 			{
 				({ getStarship, getStarshipImg }) => {
 					return (
@@ -58,6 +55,8 @@ const StarshipDetails = ({ itemId }) => {
 		</SwapiServiceConsumer>
 	)
 }
+
+
 
 export {
 	PersonDetails,

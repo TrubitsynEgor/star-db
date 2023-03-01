@@ -8,7 +8,7 @@ import { Row } from './components/row';
 import ItemList from './components/item-list/item-list';
 import { PersonList, PlanetList, StarshipList } from './components/sw-components';
 import { PersonDetails, PlanetDetails, StarshipDetails } from './components/sw-components';
-import { SwapiServiceConsumer, SwapiServiceProvider } from './components/swapi-service-context/swapi-service-context';
+import { SwapiServiceProvider } from './components/swapi-service-context/swapi-service-context';
 
 
 
