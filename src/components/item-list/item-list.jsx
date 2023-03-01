@@ -16,8 +16,6 @@ planets.getAllPlanets().then((planets) => {
 
 export default class ItemList extends Component {
 
-
-
 	state = {
 		ItemList: null,
 	}
@@ -36,7 +34,7 @@ export default class ItemList extends Component {
 			return (
 				<li
 					key={item.id}
-					onClick={() => this.props.onPersonSelected(item.id)}>
+					onClick={() => this.props.onItemSelected(item.id)}>
 					{label}
 				</li>
 			)
