@@ -1,58 +1,25 @@
-import React, { Component } from "react";
-import SwapiService from "../../services/swapi-service";
-import Spinner from "../spinner/spinner";
 
 import './item-list.css';
 
-const planets = new SwapiService;
-planets.getAllPlanets().then((planets) => {
-	planets.map(planet => {
-		return planet.name
+const ItemList = (props) => {
 
-	});
-})
-
-
-
-export default class ItemList extends Component {
-
-	state = {
-		ItemList: null,
-	}
-
-	componentDidMount() {
-
-		const { getData } = this.props;
-
-		getData()
-			.then((ItemList) => this.setState({ ItemList }))
-	}
-
-	renderItems(arr) {
-		return arr.map((item) => {
-			const label = this.props.renderItem(item)
-			return (
-				<li
-					key={item.id}
-					onClick={() => this.props.onItemSelected(item.id)}>
-					{label}
-				</li>
-			)
-		})
-	}
-
-	render() {
-
-		const { ItemList } = this.state;
-		if (!ItemList) {
-			return (
-				<ul className="item-list"><Spinner /></ul>
-			)
-		}
+	const { data, onItemSelected, children: renderLabel } = props
+	const items = data.map((item) => {
+		const { id } = item;
+		const label = renderLabel(item)
 		return (
-			<ul className="item-list">
-				{this.renderItems(ItemList)}
-			</ul>
+			<li
+				key={item.id}
+				onClick={() => onItemSelected(id)}>
+				{label}
+			</li>
 		)
-	}
+	})
+	return (
+		<ul className="item-list">
+			{items}
+		</ul>
+	)
 }
+
+export default ItemList

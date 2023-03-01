@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import Header from './components/header';
 import RandomPlanet from './components/random-planet';
 import './App.css'
-import { Record } from './components/item-details/item-details';
-import ItemDetails from './components/item-details';
 import SwapiService from './services/swapi-service';
 import ErrorBoundry from './components/error-boundry';
 import { Row } from './components/row';
+import ItemList from './components/item-list/item-list';
+import { PersonList, PlanetList, StarshipList } from './components/sw-components/list';
+import { PersonDetails, PlanetDetails, StarshipDetails } from './components/sw-components';
 
 
 
@@ -15,35 +16,35 @@ export default class App extends Component {
 
 
 	render() {
-		const { getPerson, getStarship, getPersonImg, getStarshipImg } = this.swapiService
-
-		const personDetails = (
-			<ItemDetails itemId={1} getData={getPerson} getImgUrl={getPersonImg} >
-				<Record field={'gender'} label={'Gender'} />
-				<Record field={'eyeColor'} label={'Eye color'} />
-			</ItemDetails>
-
-		);
-		const starshipDetails = (
-			<ItemDetails itemId={5} getData={getStarship} getImgUrl={getStarshipImg}>
-
-			</ItemDetails>
-		);
 
 		return (
 			<div className='app'>
 				<ErrorBoundry>
-
 					<Header />
 					<RandomPlanet />
 
-					<Row left={personDetails} right={starshipDetails} />
+					<PersonDetails itemId={11} />
+					<PlanetDetails itemId={2} />
+					<StarshipDetails itemId={15} />
+
+					<PersonList>
+						{({ name }) => <span>{name}</span>}
+					</PersonList>
+
+					<StarshipList>
+						{({ name }) => <span>{name}</span>}
+					</StarshipList>
+
+					<PlanetList>
+						{({ name }) => <span>{name}</span>}
+					</PlanetList>
 
 
-					{/* <PeoplePage
-						getData={this.swapiService.getAllPeople}
-						renderItem={({ name, gender, birthYear }) => `${name}  (${gender}),  ${birthYear}`}
-					/> */}
+
+
+
+
+
 				</ErrorBoundry>
 
 

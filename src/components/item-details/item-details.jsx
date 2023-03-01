@@ -6,12 +6,11 @@ import './item-details.css';
 
 export const Record = ({ item, field, label }) => {
 	return (
-		<li>{label}: {field}</li>
+		<li>{label}: {item[field]}</li>
 	)
 }
 
-export default class itemDetails extends Component {
-
+export default class ItemDetails extends Component {
 	swapiService = new SwapiService();
 
 	state = {
@@ -46,7 +45,7 @@ export default class itemDetails extends Component {
 				<h2> Select characters</h2>
 			)
 		}
-		const { id, name, gender, birthYear, eyeColor, } = item;
+		const { name } = item;
 
 		return (
 			<div className="item-details">
@@ -61,7 +60,7 @@ export default class itemDetails extends Component {
 					<ul className="item-details__info">
 						{
 							React.Children.map(this.props.children, (child) => {
-								return child
+								return React.cloneElement(child, { item })
 							})
 						}
 					</ul>
