@@ -19,7 +19,7 @@ export default class App extends Component {
 				<ErrorBoundry>
 					<SwapiServiceProvider value={this.swapiService}>
 						<Header />
-						<RandomPlanet />
+						<RandomPlanet updateInterval={3000} />
 
 						<PeoplesPage />
 						<PlanetsPage />

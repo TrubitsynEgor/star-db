@@ -17,14 +17,13 @@ export default class RandomPlanet extends Component {
 	}
 
 	componentDidMount() {
+		const { updateInterval } = this.props;
 		this.updatePlanet();
-		this.interval = setInterval(this.updatePlanet, 3000)
+		this.interval = setInterval(this.updatePlanet, updateInterval)
 	}
 	componentWillUnmount() {
 		clearInterval(this.interval)
 	}
-
-
 
 	onPlanetLoaded = (planet) => {
 		this.setState({
@@ -61,26 +60,29 @@ export default class RandomPlanet extends Component {
 		}
 
 		return (
-			<>
 
-				<div className="random-planet">
+			<div className="random-planet">
 
-					<div className="random-planet__img">
-						<img
-							src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-							alt="This planet Naboo" />
-					</div>
-					<div className="random-planet__content">
-						<h2 className="random-planet__title">{name}</h2>
-						<ul className="random-planet__info">
-							<li><span>Population:</span> <span>{population}</span></li>
-							<li><span>Rotation period:</span> <span>{rotationPeriod}</span></li>
-							<li><span>Diameter:</span> <span>{diameter}</span></li>
-						</ul>
-					</div>
-
+				<div className="random-planet__img">
+					<img
+						src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+						alt="This planet Naboo" />
 				</div>
-			</>
+				<div className="random-planet__content">
+					<h2 className="random-planet__title">{name}</h2>
+					<ul className="random-planet__info">
+						<li><span>Population:</span> <span>{population}</span></li>
+						<li><span>Rotation period:</span> <span>{rotationPeriod}</span></li>
+						<li><span>Diameter:</span> <span>{diameter}</span></li>
+					</ul>
+				</div>
+
+			</div>
+
 		)
 	}
+}
+
+RandomPlanet.defaultProps = {
+	updateInterval: 3000
 }

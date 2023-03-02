@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ErrorIndicator from '../error-indication'
 import Spinner from '../spinner/spinner'
 
 
