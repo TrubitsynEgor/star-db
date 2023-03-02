@@ -40,9 +40,9 @@ export default class ItemDetails extends Component {
 
 		const { item, img } = this.state
 
-		if (!this.state.item) {
+		if (!img) {
 			return (
-				<h2> Select characters</h2>
+				<h2>select from the list!</h2>
 			)
 		}
 		const { name } = item;

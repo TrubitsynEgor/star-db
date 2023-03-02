@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ErrorIndicator from '../error-indication'
-import ItemList from '../item-list/item-list'
 import Spinner from '../spinner/spinner'
 
 
