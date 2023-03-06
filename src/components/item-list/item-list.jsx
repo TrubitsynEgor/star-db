@@ -1,4 +1,5 @@
 
+import { Link, useParams } from 'react-router-dom';
 import './item-list.css';
 
 const ItemList = (props) => {
@@ -8,11 +9,12 @@ const ItemList = (props) => {
 		const { id } = item;
 		const label = renderLabel(item)
 		return (
-			<li
+			<Link
+				to={`/starhips/${id}`}
 				key={item.id}
 				onClick={() => onItemSelected(id)}>
 				{label}
-			</li>
+			</Link>
 		)
 	})
 	return (

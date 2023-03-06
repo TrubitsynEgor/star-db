@@ -1,7 +1,7 @@
 import ItemDetails, { Record } from "../item-details/item-details"
 import { SwapiServiceConsumer } from '../swapi-service-context/swapi-service-context'
 import withSwapiService from "../hoc-helpers/with-swapi-service"
-
+import { useParams } from "react-router-dom"
 
 const PersonDetails = ({ itemId }) => {
 	return (
@@ -20,6 +20,7 @@ const PersonDetails = ({ itemId }) => {
 	)
 }
 const PlanetDetails = ({ itemId }) => {
+
 	return (
 		<SwapiServiceConsumer>
 			{
